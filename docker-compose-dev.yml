@@ -1,0 +1,34 @@
+app:
+  build: .
+  links:
+    - redis
+  volumes:
+    - .:/var/www
+  volumes_from:
+    - data
+
+data:
+  build: dockerdev/data/
+
+nginx:
+  build: dockerdev/nginx/
+  ports:
+    - 8081:80
+  links:
+    - fpm
+  volumes_from:
+    - app
+  environment:
+    <APP_SERVER_NAME>: dev-machine
+
+fpm:
+  build: dockerdev/php-fpm/
+  links:
+    - redis
+  volumes_from:
+    - app
+  environment:
+    APP_SERVER_NAME: dev-machine
+
+redis:
+  image: redis:2.8.13

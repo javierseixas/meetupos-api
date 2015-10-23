@@ -1,0 +1,19 @@
+Meetupos\Infrastructure\Doctrine\ORM\Model\User\User:
+  type: entity
+  table: users
+  repositoryClass: Meetupos\Infrastructure\Doctrine\ORM\Persistence\User\UserRepository
+  id:
+    surrogateUserId:
+      column: id
+      type: string
+      generator:
+        strategy: NONE
+  fields:
+    firstname:
+      type: string
+    lastname:
+      type: string
+    email:
+      type: string
+    password:
+      type: string

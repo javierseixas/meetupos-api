@@ -1,0 +1,7 @@
+real_funding_api_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MeetuposApiBundle:Default:index }
+
+user:
+    resource: @MeetuposApiBundle/Controller/UserController.php
+    type:     rest

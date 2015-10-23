@@ -16,11 +16,22 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "rhumsaa/uuid": "~2.8",
+        "simple-bus/message-bus": "~1.0",
+        "simple-bus/symfony-bridge": "~3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
-        "behat/behat": "~3.0.15"
+        "phpunit/phpunit": ">=4.3",
+        "symfony/web-profiler-bundle": "2.5.5",
+        "nelmio/alice": "1.7.*",
+        "behat/behat": "~3.0.15",
+        "behat/symfony2-extension": "~2.0@dev",
+        "behat/mink-browserkit-driver":  "~1.1@dev",
+        "knplabs/friendly-contexts": "~0.5",
+        "coduo/php-matcher": "1.1.*",
+        "phpspec/phpspec": "2.1.*"
     },
     "scripts": {
         "post-install-cmd": [

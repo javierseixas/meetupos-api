@@ -1,0 +1,4 @@
+services:
+#    meetupos_auth_api.example:
+#        class: Meetupos\AuthApiBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

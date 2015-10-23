@@ -1,3 +1,7 @@
+meetupos_auth_api:
+    resource: "@MeetuposAuthApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

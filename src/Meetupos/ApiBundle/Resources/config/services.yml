@@ -1,0 +1,12 @@
+services:
+    register_user_command_handler:
+        class: Meetupos\Application\CommandHandler\SignUp
+        tags:
+            - { name: command_handler, handles: Meetupos\Application\Command\SignUp }
+
+    specialized_command_bus_middleware:
+        class: Meetupos\Application\CommandHandler\TransactionalHandler
+        public: false
+        arguments: [@database_connection]
+        tags:
+            - { name: command_bus_middleware, priority: 100 }

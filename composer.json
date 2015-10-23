@@ -29,7 +29,7 @@
         "behat/behat": "~3.0.15",
         "behat/symfony2-extension": "~2.0@dev",
         "behat/mink-browserkit-driver":  "~1.1@dev",
-        "knplabs/friendly-contexts": "~0.5",
+        "knplabs/friendly-contexts": "~0.5.11",
         "coduo/php-matcher": "1.1.*",
         "phpspec/phpspec": "2.1.*"
     },

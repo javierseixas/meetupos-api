@@ -2,9 +2,9 @@
 
 namespace Meetupos\Application\CommandHandler;
 
-use RealFunding\Domain\Model\User\UserAlreadyExistsException;
-use RealFunding\Domain\Model\User\UserFactory;
-use RealFunding\Domain\Model\User\UserRepository;
+use Meetupos\Domain\Model\User\UserAlreadyExistsException;
+use Meetupos\Domain\Model\User\UserFactory;
+use Meetupos\Domain\Model\User\UserRepository;
 use SimpleBus\Message\Handler\MessageHandler;
 use SimpleBus\Message\Message;
 

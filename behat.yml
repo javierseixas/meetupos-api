@@ -1,0 +1,49 @@
+default:
+    autoload:
+        '': %paths.base%/src
+    extensions:
+        Behat\Symfony2Extension: ~
+        Groupalia\BehatMatcherExtension\Extension: ~
+        Knp\FriendlyContexts\Extension:
+            api:
+                base_url: http://partners-dev.groupalia.com/app_test.php
+#            alice:
+#                fixtures:
+#                    Group: src/Groupalia/BizApiBundle/Features/Fixtures/groups.yml
+#                    Role: src/Groupalia/BizApiBundle/Features/Fixtures/roles.yml
+#                    Account: src/Groupalia/BizApiBundle/Features/Fixtures/accounts.yml
+#                    Place: src/Groupalia/BizApiBundle/Features/Fixtures/places.yml
+#                    Service: src/Groupalia/BizApiBundle/Features/Fixtures/services.yml
+#                    Campaign: src/Groupalia/BizApiBundle/Features/Fixtures/campaigns.yml
+#                    Product: src/Groupalia/BizApiBundle/Features/Fixtures/products.yml
+#                    User: src/Groupalia/BizApiBundle/Features/Fixtures/users.yml
+#                    Customer: src/Groupalia/BizApiBundle/Features/Fixtures/customers.yml
+#                    Coupon: src/Groupalia/BizApiBundle/Features/Fixtures/coupons.yml
+#                    Order: src/Groupalia/BizApiBundle/Features/Fixtures/orders.yml
+#                    Invoice: src/Groupalia/BizApiBundle/Features/Fixtures/invoices.yml
+#                    Payment: src/Groupalia/BizApiBundle/Features/Fixtures/payments.yml
+#
+#                    CampaignStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/campaigns.yml
+#                    ProductStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/products.yml
+#                    UserStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/users.yml
+#                    CouponStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/coupons.yml
+#                    OrderStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/orders.yml
+#                    Opinion: src/Groupalia/BizApiBundle/Features/Fixtures/stats/opinions.yml
+#                providers:
+#                    - @groupalia.faker.provider.campaign
+#                    - @groupalia.faker.provider.order
+#                    - @groupalia.faker.provider.geolocation
+        Behat\MinkExtension:
+            sessions:
+                my_session:
+                    symfony2: ~
+    suites:
+        auth_api:
+            type: symfony_bundle
+            bundle: MeetuposAuthApiBundle
+            contexts:
+                - Knp\FriendlyContexts\Context\MinkContext
+                - Knp\FriendlyContexts\Context\TableContext
+                - Knp\FriendlyContexts\Context\AliceContext
+                - Meetupos\AuthApiBundle\Features\Context\FeatureContext
+                - Meetupos\AuthApiBundle\Features\Context\DataContext

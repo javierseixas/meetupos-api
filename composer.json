@@ -17,9 +17,9 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "rhumsaa/uuid": "~2.8",
         "simple-bus/message-bus": "~1.0",
-        "simple-bus/symfony-bridge": "~3.0"
+        "simple-bus/symfony-bridge": "~3.0",
+        "ramsey/uuid": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

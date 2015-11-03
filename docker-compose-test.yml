@@ -1,0 +1,7 @@
+behat:
+  build: dockerdev/behat/
+  external_links:
+    - meetupos_nginx_1:nginx
+  volumes:
+    - .:/var/www
+  tty: true

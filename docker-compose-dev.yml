@@ -7,6 +7,7 @@ app:
     - .:/var/www
   volumes_from:
     - data
+  tty: true
 
 data:
   build: dockerdev/data/

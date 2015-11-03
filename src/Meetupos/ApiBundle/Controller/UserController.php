@@ -2,7 +2,7 @@
 
 namespace Meetupos\ApiBundle\Controller;
 
-use RealFunding\Application\Command\SignUp;
+use Meetupos\Application\Command\SignUp;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -18,9 +18,13 @@ use FOS\RestBundle\Controller\Annotations\Patch;
 use FOS\RestBundle\Controller\Annotations\View;
 use JMS\Serializer\SerializationContext;
 
-
-class UserController extends FOSRestController
+class UserController
 {
+    public function indexAction($name)
+    {
+        die($name);
+    }
+    
     /**
      * Create a new User
      *      

@@ -6,7 +6,7 @@ default:
         Groupalia\BehatMatcherExtension\Extension: ~
         Knp\FriendlyContexts\Extension:
             api:
-                base_url: http://partners-dev.groupalia.com/app_test.php
+                base_url: http://nginx
 #            alice:
 #                fixtures:
 #                    Group: src/Groupalia/BizApiBundle/Features/Fixtures/groups.yml
@@ -41,6 +41,8 @@ default:
         auth_api:
             type: symfony_bundle
             bundle: MeetuposAuthApiBundle
+            paths:
+                - %paths.base%/src/Meetupos/features
             contexts:
                 - Knp\FriendlyContexts\Context\MinkContext
                 - Knp\FriendlyContexts\Context\TableContext

@@ -18,6 +18,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new AppBundle\AppBundle(),
             new Meetupos\AuthApiBundle\MeetuposAuthApiBundle(),
         );

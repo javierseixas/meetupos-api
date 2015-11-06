@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y \
     php5-cli \
     php5-fpm \
     php5-json \
-    php5-intl
+    php5-intl \
+    php5-xdebug \
+    php5-pgsql
 
 ADD start.sh /start.sh
 # ADD symfony_environment.sh /etc/profile.d/symfony_environment.sh

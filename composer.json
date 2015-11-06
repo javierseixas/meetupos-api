@@ -19,7 +19,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "simple-bus/message-bus": "~1.0",
         "simple-bus/symfony-bridge": "~3.0",
-        "ramsey/uuid": "^2.8"
+        "ramsey/uuid": "^2.8",
+        "sylius/resource-bundle": "^0.15.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

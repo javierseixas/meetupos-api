@@ -1,3 +1,6 @@
 meetupos_auth_api_homepage:
     path:     /hello/{name}
     defaults: { _controller: MeetuposAuthApiBundle:Default:index }
+meetupos_user:
+    resource: meetupos.user
+    type: sylius.api

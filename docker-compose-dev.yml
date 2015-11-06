@@ -27,6 +27,7 @@ fpm:
   build: dockerdev/php-fpm/
   links:
     - redis
+    - postgres
   volumes_from:
     - app
   environment:

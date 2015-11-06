@@ -38,14 +38,21 @@ default:
                 my_session:
                     symfony2: ~
     suites:
-        auth_api:
-            type: symfony_bundle
-            bundle: MeetuposAuthApiBundle
+#        auth_api:
+#            type: symfony_bundle
+#            bundle: MeetuposAuthApiBundle
+#            paths:
+#                - %paths.base%/src/Meetupos/features
+#            contexts:
+#                - Knp\FriendlyContexts\Context\MinkContext
+#                - Knp\FriendlyContexts\Context\TableContext
+#                - Knp\FriendlyContexts\Context\AliceContext
+#                - Meetupos\AuthApiBundle\Features\Context\FeatureContext
+#                - Meetupos\AuthApiBundle\Features\Context\DataContext
+        bdd:
             paths:
                 - %paths.base%/src/Meetupos/features
             contexts:
-                - Knp\FriendlyContexts\Context\MinkContext
-                - Knp\FriendlyContexts\Context\TableContext
-                - Knp\FriendlyContexts\Context\AliceContext
-                - Meetupos\AuthApiBundle\Features\Context\FeatureContext
-                - Meetupos\AuthApiBundle\Features\Context\DataContext
+                - Meetupos\features\bootstrap\BddContext
+            filters:
+                tags: @bdd

@@ -16,6 +16,8 @@ class BddContext implements Context
 
     /**
      * @Given /^an account with username as "([^"]*)" and password "([^"]*)"$/
+     * @Given /^a user with username "([^"]*)" and password "([^"]*)" signed up$/
+     * @Given /^I signed up with username "([^"]*)" and password "([^"]*)"$/
      */
     public function anAccountWithUsernameAsAndPassword($username, $password)
     {

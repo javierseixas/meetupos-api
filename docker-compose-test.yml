@@ -5,3 +5,5 @@ behat:
   volumes:
     - .:/var/www
   tty: true
+  environment:
+    PHP_IDE_CONFIG: "serverName=application"

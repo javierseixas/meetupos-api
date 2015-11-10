@@ -7,3 +7,4 @@ behat:
   tty: true
   environment:
     PHP_IDE_CONFIG: "serverName=application"
+    XDEBUG_CONFIG: "idekey=PHPSTORM"

@@ -11,5 +11,6 @@ RUN chmod +x /entrypoint.sh
 ADD . /var/www
 VOLUME /var/www
 WORKDIR /var/www
+RUN chmod -R 777 /var/www/app/cache /var/www/app/logs
 
 ENTRYPOINT ["/entrypoint.sh"]

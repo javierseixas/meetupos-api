@@ -55,4 +55,4 @@ default:
             contexts:
                 - Meetupos\features\bootstrap\BddContext
             filters:
-                tags: @bdd
+º                tags: @domain

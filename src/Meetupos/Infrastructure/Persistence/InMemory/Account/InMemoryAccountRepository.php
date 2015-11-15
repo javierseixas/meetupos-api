@@ -2,13 +2,12 @@
 
 namespace Meetupos\Infrastructure\Persistence\InMemory\Account;
 
-
 use Meetupos\Domain\Model\Account\Account;
 use Meetupos\Domain\Model\Account\AccountRepository;
+use Meetupos\Infrastructure\Persistence\InMemory\InMemoryRepository;
 
-class InMemoryAccountRepository implements AccountRepository, \ArrayAccess
+class InMemoryAccountRepository extends InMemoryRepository implements AccountRepository, \ArrayAccess
 {
-    private $data = [];
 
     public function findByCredentials($credentials)
     {
@@ -19,29 +18,5 @@ class InMemoryAccountRepository implements AccountRepository, \ArrayAccess
         }
 
         return null;
-    }
-
-    public function offsetExists($offset)
-    {
-        return isset($this->data[$offset]);
-    }
-
-    public function offsetGet($offset)
-    {
-        return isset($this->data[$offset]) ? $this->data[$offset] : null;
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        if (is_null($offset)) {
-            $this->data[] = $value;
-        } else {
-            $this->data[$offset] = $value;
-        }
-    }
-
-    public function offsetUnset($offset)
-    {
-        unset($this->data[$offset]);
     }
 }

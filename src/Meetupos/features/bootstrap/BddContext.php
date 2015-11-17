@@ -8,10 +8,10 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Meetupos\Domain\AuthenticationSystem;
 use Meetupos\Domain\Model\Account\Account;
 use Meetupos\Domain\Model\Account\Credentials;
-use Meetupos\Domain\Model\Meetup\Schedule;
-use Meetupos\Domain\Model\Meetup\Meetup;
+use Meetupos\Domain\Model\Event\Schedule;
+use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Infrastructure\Persistence\InMemory\Account\InMemoryAccountRepository;
-use Meetupos\Infrastructure\Persistence\InMemory\Meetup\InMemoryMeetupRepository;
+use Meetupos\Infrastructure\Persistence\InMemory\Meetup\InMemoryEventRepository;
 use PHPUnit_Framework_Assert;
 
 class BddContext implements Context, SnippetAcceptingContext
@@ -20,7 +20,7 @@ class BddContext implements Context, SnippetAcceptingContext
     private $credentials;
 
     private $meetups;
-    /** @var  Schedule */
+    /** @var  \Meetupos\Domain\Model\Event\Schedule */
     private $schedule;
 
     /**
@@ -62,32 +62,32 @@ class BddContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given There are no meetups in the schedule
+     * @Given There are no events in the schedule
      */
-    public function thereAreNoMeetupsInTheSchedule()
+    public function thereAreNoEventsInTheSchedule()
     {
-        $this->schedule = new Schedule(new InMemoryMeetupRepository());
-        PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingMeetups(), 0);
+        $this->schedule = new Schedule(new InMemoryEventRepository());
+        PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingEvents(), 0);
     }
 
     /**
-     * @When I create a meetup titled :title and described with :description
+     * @When I create an event titled :title and described with :description
      */
-    public function iCreateAMeetupTitledAndDescribedWith($title, $description)
+    public function iCreateAnEventTitledAndDescribedWith($title, $description)
     {
-        $meetup = Meetup::withTitleAndDescription($title, $description);
-        $this->schedule->addMeetup($meetup);
+        $event = Event::withTitleAndDescription($title, $description);
+        $this->schedule->addEvent($event);
     }
 
     /**
-     * @Then a new meetup titled :title should be in the schedule
+     * @Then a new event titled :title should be in the schedule
      */
-    public function iNewMeetupTitledShouldBeInTheSchedule($title)
+    public function aNewEventTitledShouldBeInTheSchedule($title)
     {
-        PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingMeetups(), 1);
-        $meetups = $this->schedule->allMeetups();
-        /** @var Meetup $meetup */
-        $meetup = array_shift($meetups);
-        PHPUnit_Framework_Assert::assertEquals($meetup->title(), $title);
+        PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingEvents(), 1);
+        $events = $this->schedule->allEvents();
+        /** @var \Meetupos\Domain\Model\Event\Event $event */
+        $event = array_shift($events);
+        PHPUnit_Framework_Assert::assertEquals($event->title(), $title);
     }
 }

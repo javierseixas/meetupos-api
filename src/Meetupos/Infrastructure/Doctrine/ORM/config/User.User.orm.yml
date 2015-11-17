@@ -1,7 +1,7 @@
 Meetupos\Infrastructure\Doctrine\ORM\Model\User\User:
   type: entity
   table: users
-  repositoryClass: Meetupos\Infrastructure\Doctrine\ORM\Persistence\User\UserRepository
+  repositoryClass: Meetupos\Infrastructure\Doctrine\ORM\Model\User\UserRepository
   id:
     surrogateUserId:
       column: id

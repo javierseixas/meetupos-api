@@ -1,18 +1,17 @@
 <?php
 
-namespace Meetupos\Domain\Model\Meetup;
-
+namespace Meetupos\Domain\Model\Event;
 
 use Rhumsaa\Uuid\Uuid;
 
-class Meetup
+class Event
 {
     protected $id;
     protected $title;
     protected $description;
 
     /**
-     * Meetup constructor.
+     * Event constructor.
      * @param $title
      * @param $description
      */
@@ -25,7 +24,7 @@ class Meetup
 
     public static function withTitleAndDescription($title, $description)
     {
-        return new Meetup($title, $description);
+        return new Event($title, $description);
     }
 
     public function id()

@@ -1,6 +1,6 @@
 <?php
 
-namespace Meetupos\Infrastructure\Doctrine\ORM\Persistence\User;
+namespace Meetupos\Infrastructure\Doctrine\ORM\Model\User;
 
 use Meetupos\Domain\Model\User\User;
 use Meetupos\Domain\Model\User\UserId;

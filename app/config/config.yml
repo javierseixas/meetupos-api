@@ -77,6 +77,11 @@ doctrine:
                 dir: "%kernel.root_dir%/../src/Meetupos/Infrastructure/Doctrine/ORM/config"
                 is_bundle: false
                 prefix: Meetupos\Infrastructure\Doctrine\ORM\Model
+            Event:
+                type: yml
+                dir: "%kernel.root_dir%/../src/Meetupos/Infrastructure/Persistence/Doctrine/ORM/config"
+                is_bundle: false
+                prefix: Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model
 
 # Swiftmailer Configuration
 swiftmailer:

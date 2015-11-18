@@ -1,4 +1,5 @@
-@bdd @domain
+# TODO @reset-schema should be inside the ApiContext
+@bdd @reset-schema @domain
 Feature: Events creation
     As a admin
     I want to create events

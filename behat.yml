@@ -4,6 +4,7 @@ default:
     extensions:
         Behat\Symfony2Extension: ~
         Groupalia\BehatMatcherExtension\Extension: ~
+        JavierSeixas\FriendlyContextsAsServicesExtension\Extension: ~
         Knp\FriendlyContexts\Extension:
             api:
                 base_url: http://nginx
@@ -55,4 +56,12 @@ default:
             contexts:
                 - Meetupos\features\bootstrap\BddContext
             filters:
-º                tags: @domain
+                tags: @domain
+        api:
+            paths:
+                - %paths.base%/src/Meetupos/features
+            contexts:
+                - Knp\FriendlyContexts\Context\AliceContext
+                - Meetupos\features\bootstrap\ApiContext
+            filters:
+                tags: @api

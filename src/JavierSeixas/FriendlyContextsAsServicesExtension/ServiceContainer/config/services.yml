@@ -1,0 +1,8 @@
+services:
+    javxas_friendly_as_service.entity_context:
+        class: Meetupos\features\bootstrap\DataContext
+        calls:
+            - [initialize, [[], "@service_container"]]
+
+    friendly.entity_context:
+        alias: javxas_friendly_as_service.entity_context

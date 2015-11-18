@@ -9,4 +9,6 @@ interface EventRepositoryInterface
     public function add(Event $meetup);
 
     public function all();
+
+    public function with($id);
 }

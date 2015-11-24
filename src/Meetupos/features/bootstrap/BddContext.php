@@ -16,10 +16,10 @@ use PHPUnit_Framework_Assert;
 
 class BddContext implements Context, SnippetAcceptingContext
 {
+    protected $outcome;
     private $accounts;
     private $credentials;
 
-    private $meetups;
     /** @var  \Meetupos\Domain\Model\Event\Schedule */
     private $schedule;
 
@@ -71,9 +71,9 @@ class BddContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @When I create an event titled :title and described with :description
+     * @When I create an event titled :title and described :description
      */
-    public function iCreateAnEventTitledAndDescribedWith($title, $description)
+    public function iCreateAnEventTitledAndDescribed($title, $description)
     {
         $event = Event::withTitleAndDescription($title, $description);
         $this->schedule->addEvent($event);
@@ -89,5 +89,26 @@ class BddContext implements Context, SnippetAcceptingContext
         /** @var \Meetupos\Domain\Model\Event\Event $event */
         $event = array_shift($events);
         PHPUnit_Framework_Assert::assertEquals($event->title(), $title);
+    }
+
+    /**
+     * @When I create an event with no info
+     */
+    public function iCreateAnEventWithNoInfo()
+    {
+        try {
+            $this->iCreateAnEventTitledAndDescribed("", "");
+        }
+        catch(\Exception $ex) {
+            $this->outcome = $ex;
+        }
+    }
+
+    /**
+     * @Then no new event should be in the schedule
+     */
+    public function noNewEventShouldBeInTheSchedule()
+    {
+        PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingEvents(), 0);
     }
 }

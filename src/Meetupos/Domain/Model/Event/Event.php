@@ -24,6 +24,10 @@ class Event
 
     public static function withTitleAndDescription($title, $description)
     {
+        if (empty($title) || empty($description)) {
+            throw new IncompleteEventException("Event requires to have a title and a description to be created");
+        }
+
         return new Event($title, $description);
     }
 

@@ -6,7 +6,7 @@ use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Domain\Model\Event\EventRepositoryInterface;
 use Meetupos\Infrastructure\Persistence\InMemory\InMemoryRepository;
 
-class InMemoryEventRepository extends InMemoryRepository implements \Meetupos\Domain\Model\Event\EventRepositoryInterface
+class InMemoryEventRepository extends InMemoryRepository implements EventRepositoryInterface
 {
     public function numberOfComingEvents(\Datetime $date)
     {
@@ -23,5 +23,10 @@ class InMemoryEventRepository extends InMemoryRepository implements \Meetupos\Do
     public function all()
     {
         return $this->data;
+    }
+
+    public function with($id)
+    {
+        // TODO: Implement with() method.
     }
 }

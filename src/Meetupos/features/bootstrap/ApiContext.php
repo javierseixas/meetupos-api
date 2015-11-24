@@ -19,7 +19,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
     }
 
     /**
-     * @When I create an event titled :title and described with :description
+     * @When I create an event titled :title and described :description
      */
     public function iCreateAnEventTitledAndDescribedWith($title, $description)
     {

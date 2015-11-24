@@ -8,6 +8,10 @@ Feature: Events creation
     @api
     Scenario: I create an event successfully
         Given There are no events in the schedule
-         When I create an event titled "Feminismo" and described with "This is my description"
+         When I create an event titled "Feminismo" and described "This is my description"
          Then a new event titled "Feminismo" should be in the schedule
 
+    Scenario: I get an error if I try to create an event with empty title or description
+        Given There are no events in the schedule
+         When I create an event with no info
+         Then no new event should be in the schedule

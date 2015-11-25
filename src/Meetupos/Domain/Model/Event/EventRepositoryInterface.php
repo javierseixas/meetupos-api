@@ -11,4 +11,9 @@ interface EventRepositoryInterface
     public function all();
 
     public function with($id);
+
+    /**
+     * @return EventId
+     */
+    public function nextIdentity();
 }

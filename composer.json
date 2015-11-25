@@ -32,7 +32,7 @@
         "behat/mink-browserkit-driver":  "~1.1@dev",
         "knplabs/friendly-contexts": "~0.5.11",
         "coduo/php-matcher": "1.1.*",
-        "phpspec/phpspec": "~2.3.*"
+        "phpspec/phpspec": "~2.3"
     },
     "scripts": {
         "post-install-cmd": [

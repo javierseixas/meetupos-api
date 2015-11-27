@@ -21,14 +21,15 @@ class CreateEventHandlerSpec extends ObjectBehavior
         $this->shouldHaveType('Meetupos\Application\CommandHandler\CreateEventHandler');
     }
 
-    public function it_should_create_a_new_event(CreateEvent $command, EventRepositoryInterface $eventRepository, EventId $eventId)
+     public function it_should_create_a_new_event(CreateEvent $command, EventRepositoryInterface $eventRepository, EventId $eventId)
     {
-        //$eventId = new EventId();
-        $eventRepository->nextIdentity()->willReturn($eventId);
-        $event = Event::withTitleAndDescription($eventId->getWrappedObject(), "title", "description");
+        $eventTitle = "title";
+        $eventDescription = "description";
 
-        $command->title()->willReturn("title");
-        $command->description()->willReturn("description");
+        $command->title()->willReturn($eventTitle);
+        $command->description()->willReturn($eventDescription);
+
+        $event = Event::withTitleAndDescription($eventTitle, $eventDescription);
 
         $eventRepository->add($event)->shouldBeCalled();
 

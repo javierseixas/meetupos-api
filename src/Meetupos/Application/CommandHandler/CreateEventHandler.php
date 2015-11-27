@@ -31,7 +31,6 @@ class CreateEventHandler implements MessageHandler
     public function handle(Message $message)
     {
         $event = Event::withTitleAndDescription(
-            $this->eventRepository->nextIdentity(),
             $message->title(),
             $message->description()
         );

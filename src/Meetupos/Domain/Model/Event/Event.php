@@ -15,20 +15,20 @@ class Event
      * @param $title
      * @param $description
      */
-    protected function __construct(EventId $eventId, $title, $description)
+    protected function __construct($eventId, $title, $description)
     {
         $this->id = $eventId;
         $this->title = $title;
         $this->description = $description;
     }
 
-    public static function withTitleAndDescription($eventId, $title, $description)
+    public static function withTitleAndDescription($title, $description)
     {
         if (empty($title) || empty($description)) {
             throw new IncompleteEventException("Event requires to have a title and a description to be created");
         }
 
-        return new self($eventId, $title, $description);
+        return new self(Uuid::uuid4()->toString(), $title, $description);
     }
 
     public function id()

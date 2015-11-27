@@ -4,8 +4,8 @@ namespace spec\Meetupos\Application\CommandHandler;
 
 use Meetupos\Application\Command\CreateEvent;
 use Meetupos\Domain\Model\Event\Event;
-use Meetupos\Domain\Model\Event\EventId;
 use Meetupos\Domain\Model\Event\EventRepositoryInterface;
+use JavierSeixas\ExactIgnorableValueToken;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -21,7 +21,7 @@ class CreateEventHandlerSpec extends ObjectBehavior
         $this->shouldHaveType('Meetupos\Application\CommandHandler\CreateEventHandler');
     }
 
-     public function it_should_create_a_new_event(CreateEvent $command, EventRepositoryInterface $eventRepository, EventId $eventId)
+    public function it_should_create_a_new_event(CreateEvent $command, EventRepositoryInterface $eventRepository)
     {
         $eventTitle = "title";
         $eventDescription = "description";
@@ -31,7 +31,9 @@ class CreateEventHandlerSpec extends ObjectBehavior
 
         $event = Event::withTitleAndDescription($eventTitle, $eventDescription);
 
-        $eventRepository->add($event)->shouldBeCalled();
+        $eventIgnoringWrapper = new ExactIgnorableValueToken($event, ['id']);
+
+        $eventRepository->add($eventIgnoringWrapper)->shouldBeCalled();
 
         $this->handle($command);
     }

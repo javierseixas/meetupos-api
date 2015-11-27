@@ -11,7 +11,7 @@ use Meetupos\Domain\Model\Account\Credentials;
 use Meetupos\Domain\Model\Event\Schedule;
 use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Infrastructure\Persistence\InMemory\Account\InMemoryAccountRepository;
-use Meetupos\Infrastructure\Persistence\InMemory\Meetup\InMemoryEventRepository;
+use Meetupos\Infrastructure\Persistence\InMemory\Event\InMemoryEventRepository;
 use PHPUnit_Framework_Assert;
 
 class BddContext implements Context, SnippetAcceptingContext

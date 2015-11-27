@@ -1,6 +1,6 @@
 <?php
 
-namespace Meetupos\Infrastructure\Persistence\InMemory\Meetup;
+namespace Meetupos\Infrastructure\Persistence\InMemory\Event;
 
 use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Domain\Model\Event\EventRepositoryInterface;

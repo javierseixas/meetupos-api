@@ -72,16 +72,16 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: false
         mappings:
-            User:
+#            Event:
+#                type: yml
+#                dir: "%kernel.root_dir%/../src/Meetupos/Infrastructure/Persistence/Doctrine/ORM/config"
+#                is_bundle: false
+#                prefix: Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model
+            Domain:
                 type: yml
-                dir: "%kernel.root_dir%/../src/Meetupos/Infrastructure/Doctrine/ORM/config"
+                dir: "%kernel.root_dir%/../src/Meetupos/Infrastructure/Persistence/Doctrine/ORM/config/test"
                 is_bundle: false
-                prefix: Meetupos\Infrastructure\Doctrine\ORM\Model
-            Event:
-                type: yml
-                dir: "%kernel.root_dir%/../src/Meetupos/Infrastructure/Persistence/Doctrine/ORM/config"
-                is_bundle: false
-                prefix: Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model
+                prefix: Meetupos\Domain\Model
 
 # Swiftmailer Configuration
 swiftmailer:

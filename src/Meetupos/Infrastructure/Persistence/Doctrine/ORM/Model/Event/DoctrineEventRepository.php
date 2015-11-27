@@ -18,6 +18,7 @@ class DoctrineEventRepository extends EntityRepository implements EventRepositor
     public function add(Event $event)
     {
         $this->getEntityManager()->persist($event);
+        $this->getEntityManager()->flush();
     }
 
     public function all()

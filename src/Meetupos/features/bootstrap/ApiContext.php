@@ -15,7 +15,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
     {
         // TODO Check database
         $tableNode = new TableNode([]);
-        $this->get('friendly.entity_context')->thereIsLikeFollowing(0, "DoctrineEvent", $tableNode);
+        $this->get('friendly.entity_context')->thereIsLikeFollowing(0, "Event", $tableNode);
     }
 
     /**
@@ -38,6 +38,6 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
             0 => ["title"],
             1 => [$title]
         ]);
-        $this->get('friendly.entity_context')->existLikeFollowing(1, "DoctrineEvent", $tableNode);
+        $this->get('friendly.entity_context')->existLikeFollowing(1, "Event", $tableNode);
     }
 }

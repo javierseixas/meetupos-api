@@ -5,7 +5,6 @@ namespace Meetupos\ApiBundle\Controller;
 use Meetupos\Application\Command\CreateEvent;
 use Meetupos\Application\CommandHandler\CreateEventHandler;
 use Meetupos\Domain\Model\Event\EventRepositoryInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 class EventController
@@ -24,7 +23,7 @@ class EventController
     {
         $commandBus = new CreateEventHandler($this->eventRepository);
 
-        $commandBus->handle(new CreateEvent("title", "description"));
+        $commandBus->handle(new CreateEvent("Feminismo", "description"));
 
         return new Response('{ "message": "cool!" }', Response::HTTP_CREATED);
     }

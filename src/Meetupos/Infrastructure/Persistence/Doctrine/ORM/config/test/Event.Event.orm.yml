@@ -1,0 +1,15 @@
+Meetupos\Domain\Model\Event\Event:
+  type: entity
+  table: events
+  repositoryClass: Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model\Event\DoctrineEventRepository
+  id:
+    id:
+      column: id
+      type: string
+      generator:
+        strategy: NONE
+  fields:
+    title:
+      type: string
+    description:
+      type: text

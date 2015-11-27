@@ -61,6 +61,7 @@ default:
             paths:
                 - %paths.base%/src/Meetupos/features
             contexts:
+                - Knp\FriendlyContexts\Context\EntityContext
                 - Knp\FriendlyContexts\Context\AliceContext
                 - Meetupos\features\bootstrap\ApiContext
             filters:

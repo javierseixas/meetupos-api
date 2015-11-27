@@ -4,9 +4,6 @@ namespace Meetupos\Application\CommandHandler;
 
 use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Domain\Model\Event\EventRepositoryInterface;
-use Meetupos\Domain\Model\User\UserAlreadyExistsException;
-use Meetupos\Domain\Model\User\UserFactory;
-use Meetupos\Domain\Model\User\UserRepository;
 use SimpleBus\Message\Handler\MessageHandler;
 use SimpleBus\Message\Message;
 

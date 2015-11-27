@@ -2,6 +2,7 @@ real_funding_api_homepage:
     path:     /hello/{name}
     defaults: { _controller: MeetuposApiBundle:User:index }
 
-user:
-    resource: @MeetuposApiBundle/Controller/UserController.php
-    type:     rest
+event:
+    path: /events
+    defaults: { _controller: sf_event_controller:postEvent }
+#    defaults: { _controller: MeetuposApiBundle:Event:postEvent }

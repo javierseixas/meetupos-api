@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class RealFundingApiExtension extends Extension
+class MeetuposApiExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -23,7 +23,8 @@ class RealFundingApiExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+        $loader->load('controllers.yml');
+        $loader->load('repositories.yml');
     }
 }

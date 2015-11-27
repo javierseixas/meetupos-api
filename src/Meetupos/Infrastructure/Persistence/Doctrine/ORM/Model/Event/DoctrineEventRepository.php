@@ -15,9 +15,9 @@ class DoctrineEventRepository extends EntityRepository implements EventRepositor
         // TODO: Implement numberOfComingEvents() method.
     }
 
-    public function add(Event $meetup)
+    public function add(Event $event)
     {
-        // TODO: Implement add() method.
+        $this->getEntityManager()->persist($event);
     }
 
     public function all()

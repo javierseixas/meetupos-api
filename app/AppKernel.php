@@ -5,8 +5,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    const DEV_ROOT_DIR = '/var';
-
     public function registerBundles()
     {
         $bundles = array(
@@ -24,6 +22,7 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new AppBundle\AppBundle(),
+            new Meetupos\ApiBundle\MeetuposApiBundle(),
             new Meetupos\AuthApiBundle\MeetuposAuthApiBundle(),
         );
 

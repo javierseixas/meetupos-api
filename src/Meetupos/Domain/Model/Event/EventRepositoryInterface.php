@@ -6,7 +6,7 @@ interface EventRepositoryInterface
 {
     public function numberOfComingEvents(\Datetime $date);
 
-    public function add(Event $meetup);
+    public function add(Event $event);
 
     public function all();
 

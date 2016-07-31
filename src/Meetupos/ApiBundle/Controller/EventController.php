@@ -30,7 +30,7 @@ class EventController
 
         $createEventCommand = $this->serializer->deserialize(
             $requestBody,
-            "Meetupos\\Application\\Command\\CreateEvent",
+            CreateEvent::class,
             'json'
         );
 

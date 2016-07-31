@@ -27,4 +27,14 @@ class Schedule
     {
         return $this->repository->all();
     }
+
+    public function deleteEvent(Event $event)
+    {
+        return $this->repository->delete($event);
+    }
+
+    public function find($event)
+    {
+        return $this->repository->with($event->id());
+    }
 }

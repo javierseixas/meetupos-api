@@ -23,6 +23,9 @@ class BddContext implements Context, SnippetAcceptingContext
     /** @var  \Meetupos\Domain\Model\Event\Schedule */
     private $schedule;
 
+    /** @var  \Meetupos\Domain\Model\Event\Event */
+    private $event;
+
     /**
      * @Given /^an account with username as "([^"]*)" and password "([^"]*)"$/
      * @Given /^a user with username "([^"]*)" and password "([^"]*)" signed up$/
@@ -110,5 +113,31 @@ class BddContext implements Context, SnippetAcceptingContext
     public function noNewEventShouldBeInTheSchedule()
     {
         PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingEvents(), 0);
+    }
+
+    /**
+     * @Given /^There is an event titled "([^"]*)" in the schedule$/
+     */
+    public function thereIsAnEventTitledInTheSchedule($title)
+    {
+        $this->schedule = new Schedule(new InMemoryEventRepository());
+        $this->event = Event::withTitleAndDescription($title, "Some desc");
+        $this->schedule->addEvent($this->event);
+    }
+
+    /**
+     * @When /^I delete the event$/
+     */
+    public function iDeleteTheEvent()
+    {
+        $this->schedule->deleteEvent($this->event);
+    }
+
+    /**
+     * @Then /^That event should be removed from the schedule$/
+     */
+    public function thatEventShouldBeRemovedFromTheSchedule()
+    {
+        PHPUnit_Framework_Assert::assertNull($this->schedule->find($this->event));
     }
 }

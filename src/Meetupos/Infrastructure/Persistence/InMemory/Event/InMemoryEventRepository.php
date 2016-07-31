@@ -27,6 +27,21 @@ class InMemoryEventRepository extends InMemoryRepository implements EventReposit
 
     public function with($id)
     {
-        // TODO: Implement with() method.
+        foreach ($this->data as $eventId => $eventInSchedule) {
+            if ($eventId === $id) {
+                return $eventInSchedule;
+            }
+        }
+
+        return null;
+    }
+
+    public function delete(Event $event)
+    {
+        foreach ($this->data as $eventId => $eventInSchedule) {
+            if ($eventId === $event->id()) {
+                unset($this->data[$eventId]);
+            }
+        }
     }
 }

@@ -1,18 +1,45 @@
-MeetupOS - Open Source Meetup
+MeetupOS - Open Source Meetup API
 =============================
 
+This is an API to support the MeetupOS project
+
+How to test it
+----------------------------
+
+I'm developing this following a BDD approach, trying to apply modeling by example. So the way to execute the test is by run:
+
+1. First run Docker dev (Docker-Compose-Run):
+
+```
+./dcr app app/console cache:clear
+```
+
+For running the domain (?) tests:
+
+```
+./dcrt -s bdd
+```
+
+For running the functional api tests:
+
+```
+./dcrt -s api
+```
+
+For running specs (you don't need docker if already have php in your machine):
+
+```
+bin/phpspec run
+```
 
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+How to run docker containers for using the app (Still not accessible)
+---------------
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+```
+./dcr
+```
 
-What's inside?
---------------
-
-The Symfony Standard Edition is configured with the following defaults:
 
   * An AppBundle you can use to start coding;
 
@@ -60,15 +87,3 @@ It comes pre-configured with the following bundles:
 
 All libraries and bundles included in the Symfony Standard Edition are
 released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/2.7/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/2.7/book/doctrine.html
-[8]:  https://symfony.com/doc/2.7/book/templating.html
-[9]:  https://symfony.com/doc/2.7/book/security.html
-[10]: https://symfony.com/doc/2.7/cookbook/email.html
-[11]: https://symfony.com/doc/2.7/cookbook/logging/monolog.html
-[12]: https://symfony.com/doc/2.7/cookbook/assetic/asset_management.html
-[13]: https://symfony.com/doc/2.7/bundles/SensioGeneratorBundle/index.html

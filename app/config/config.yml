@@ -108,3 +108,12 @@ jms_serializer:
             command:
                 namespace_prefix: "Meetupos\\Application\\Command"
                 path: "../src/Meetupos/ApiBundle/Resources/config/serializer"
+            model:
+                namespace_prefix: "Meetupos\\Domain\\Model"
+                path: "../src/Meetupos/ApiBundle/Resources/config/serializer/model"
+
+bazinga_hateoas:
+    metadata:
+        cache: file
+        file_cache:
+            dir: "%kernel.cache_dir%/hateoas"

@@ -1,0 +1,27 @@
+Meetupos\Domain\Model\Event\Event:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties :
+        id:
+            type: string
+            expose: true
+            accessor:
+                getter: id
+        title :
+            type: string
+            expose : true
+            accessor:
+                getter: title
+        description :
+            type: string
+            expose : true
+            accessor:
+                getter: title
+    relations:
+        -
+            rel: self
+            href:
+                route: get_event
+                parameters:
+                    id: expr(object.id())
+                absolute: true

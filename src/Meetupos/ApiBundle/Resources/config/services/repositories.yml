@@ -3,4 +3,4 @@ services:
         class: Doctrine\Common\Persistence\ObjectRepository
         factory_service: doctrine # this is an instance of Registry
         factory_method: getRepository
-º        arguments: [ "Meetupos\\Domain\\Model\\Event\\Event" ]
+        arguments: [ "Meetupos\\Domain\\Model\\Event\\Event" ]

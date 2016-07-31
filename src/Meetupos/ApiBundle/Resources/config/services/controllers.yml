@@ -1,4 +1,4 @@
 services:
     sf_event_controller:
         class: Meetupos\ApiBundle\Controller\EventController
-        arguments: [@doctrine_event_repository]
+        arguments: [@doctrine_event_repository, @serializer]

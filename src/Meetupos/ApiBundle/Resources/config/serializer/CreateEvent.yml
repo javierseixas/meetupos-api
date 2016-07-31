@@ -1,0 +1,10 @@
+Meetupos\Application\Command\CreateEvent:
+    exclusion_policy: ALL
+    access_type: public_method
+    properties :
+        title :
+            type: string
+            expose : true
+        description :
+            type: string
+            expose : true

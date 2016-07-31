@@ -62,7 +62,7 @@ class BddContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given There are no events in the schedule
+     * @When There are no events in the schedule
      */
     public function thereAreNoEventsInTheSchedule()
     {

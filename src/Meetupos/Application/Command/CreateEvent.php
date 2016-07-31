@@ -3,6 +3,7 @@
 namespace Meetupos\Application\Command;
 
 use SimpleBus\Message\Message;
+use JMS\Serializer\Annotation\Type;
 
 class CreateEvent implements Message
 {
@@ -34,5 +35,39 @@ class CreateEvent implements Message
     public function description()
     {
         return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
     }
 }

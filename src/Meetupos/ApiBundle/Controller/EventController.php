@@ -4,7 +4,9 @@ namespace Meetupos\ApiBundle\Controller;
 
 use JMS\Serializer\SerializerInterface;
 use Meetupos\Application\Command\CreateEvent;
+use Meetupos\Application\Command\DeleteEvent;
 use Meetupos\Application\CommandHandler\CreateEventHandler;
+use Meetupos\Application\CommandHandler\DeleteEventHandler;
 use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Domain\Model\Event\EventRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,11 +20,21 @@ class EventController
     /**
      * EventController constructor.
      * TODO Coupled to the JMS Serializer
+     * TODO Controllers should not know about repositories
      */
     public function __construct(EventRepositoryInterface $eventRepository, SerializerInterface $serializer)
     {
         $this->eventRepository = $eventRepository;
         $this->serializer = $serializer;
+    }
+
+    public function deleteEvent($id)
+    {
+        $commandBus = new DeleteEventHandler($this->eventRepository);
+
+        $commandBus->handle(new DeleteEvent($id));
+
+        return new Response("", Response::HTTP_NO_CONTENT);
     }
 
     // TODO Move this to CQRS?
@@ -47,6 +59,7 @@ class EventController
             'json'
         );
 
+        //TODO Should it be a service?
         $commandBus = new CreateEventHandler($this->eventRepository);
 
         $commandBus->handle($createEventCommand);

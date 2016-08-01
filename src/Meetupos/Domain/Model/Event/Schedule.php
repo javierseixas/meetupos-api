@@ -33,7 +33,7 @@ class Schedule
         return $this->repository->delete($event);
     }
 
-    public function find($event)
+    public function find(Event $event)
     {
         return $this->repository->with($event->id());
     }

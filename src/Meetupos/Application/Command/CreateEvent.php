@@ -3,7 +3,6 @@
 namespace Meetupos\Application\Command;
 
 use SimpleBus\Message\Message;
-use JMS\Serializer\Annotation\Type;
 
 class CreateEvent implements Message
 {

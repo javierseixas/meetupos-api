@@ -5,7 +5,7 @@ Feature: Events deletion
     I want to delete events
     In order to remove events that are not going to happen
 
-    @wo
+    @wo @api
     Scenario: I delete an event successfully
         Given There is an event titled "Heteropatriarcado" in the schedule
          When I delete the event

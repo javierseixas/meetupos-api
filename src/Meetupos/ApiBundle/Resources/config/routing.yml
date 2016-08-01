@@ -11,3 +11,8 @@ get_event:
     path: /events/{id}
     defaults: { _controller: sf_event_controller:getEvent }
     methods:  [GET]
+
+delete_event:
+    path: /events/{id}
+    defaults: { _controller: sf_event_controller:deleteEvent }
+    methods:  [DELETE]

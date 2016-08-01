@@ -30,4 +30,10 @@ class DoctrineEventRepository extends EntityRepository implements EventRepositor
     {
         return $this->find($id);
     }
+
+    public function delete(Event $event)
+    {
+        $this->getEntityManager()->remove($event);
+        $this->getEntityManager()->flush($event);
+    }
 }

@@ -13,7 +13,9 @@ use Meetupos\Domain\Model\Event\Event;
 use Meetupos\Infrastructure\Persistence\InMemory\Account\InMemoryAccountRepository;
 use Meetupos\Infrastructure\Persistence\InMemory\Event\InMemoryEventRepository;
 use PHPUnit_Framework_Assert;
+use PHPUnit_Framework_Constraint_ArraySubset;
 
+// TODO The initialization of the schedule object is common for all the Given step. It should be extracted
 class BddContext implements Context, SnippetAcceptingContext
 {
     protected $outcome;
@@ -139,5 +141,48 @@ class BddContext implements Context, SnippetAcceptingContext
     public function thatEventShouldBeRemovedFromTheSchedule()
     {
         PHPUnit_Framework_Assert::assertNull($this->schedule->find($this->event));
+    }
+
+    /**
+     * @Given /^There are a couple of events in the schedule$/
+     */
+    public function thereAreACoupleOfEventsInTheSchedule()
+    {
+        $this->schedule = new Schedule(new InMemoryEventRepository());
+
+        $firstEvent = Event::withTitleAndDescription("Catan", "Best boardgame");
+        $secondEvent = Event::withTitleAndDescription("Cuatrola", "Quite good card game");
+
+        $this->schedule
+            ->addEvent($firstEvent)
+            ->addEvent($secondEvent);
+    }
+
+    /**
+     * @When /^I access the list$/
+     * TODO I don't see the point to this step in a Domain Context
+     */
+    public function iAccessTheList()
+    {
+        $this->schedule->comingEvents();
+    }
+
+    /**
+     * @Then /^I see these events listed$/
+     */
+    public function iSeeTheseEventsListed()
+    {
+        $expectedEvents = ["Catan", "Cuatrola"];
+        $foundElements = [];
+
+        foreach($this->schedule->comingEvents() as $event) {
+            if (in_array($event->title(), $expectedEvents)) {
+                $foundElements[] = $event->title();
+            }
+        }
+
+        PHPUnit_Framework_Assert::assertCount(count($expectedEvents), $foundElements);
+        $matchExpectedEvents = new PHPUnit_Framework_Constraint_ArraySubset($expectedEvents);
+        PHPUnit_Framework_Assert::assertThat($foundElements, $matchExpectedEvents);
     }
 }

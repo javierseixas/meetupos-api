@@ -14,6 +14,9 @@ use PHPUnit_Framework_Assert;
 class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Context, SnippetAcceptingContext
 {
     const HTTP_STATUS_NO_CONTENT = 204;
+    const HTTP_STATUS_OK = 200;
+    const HTTP_STATUS_CREATED = 201;
+
     /** @var  \Meetupos\Domain\Model\Event\Schedule */
     private $schedule;
 
@@ -39,7 +42,8 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         $this->iPrepareRequest("POST", "/events");
         $this->iSpecifiedTheBody(sprintf('{"title":"%s","description":"%s"}', $title, $description));
         $this->iSendTheRequest();
-        // TODO I should check response (http status at least) for facilitate testing feedback
+
+        $this->assertHttpResponseStatus(self::HTTP_STATUS_CREATED);
     }
 
     /**
@@ -72,11 +76,8 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
     {
         $this->iPrepareRequest("DELETE", sprintf("/events/%s", $this->event->id()));
         $this->iSendTheRequest();
-        PHPUnit_Framework_Assert::assertEquals(
-            self::HTTP_STATUS_NO_CONTENT,
-            $this->getResponse()->getStatusCode(),
-            sprintf("Wrong HTTP Status: %d expected. Got %d", self::HTTP_STATUS_NO_CONTENT, $this->getResponse()->getStatusCode())
-        );
+
+        $this->assertHttpResponseStatus(self::HTTP_STATUS_NO_CONTENT);
     }
 
     /**
@@ -87,5 +88,14 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         $this->getEntityManager()->clear(Event::class);
         $removedEvent = $this->schedule->find($this->event);
         PHPUnit_Framework_Assert::assertNull($removedEvent);
+    }
+
+    private function assertHttpResponseStatus($expected)
+    {
+        PHPUnit_Framework_Assert::assertEquals(
+            $expected,
+            $this->getResponse()->getStatusCode(),
+            sprintf("Wrong HTTP Status: %d expected. Got %d", $expected, $this->getResponse()->getStatusCode())
+        );
     }
 }

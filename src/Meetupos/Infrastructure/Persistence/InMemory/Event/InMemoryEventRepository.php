@@ -44,4 +44,16 @@ class InMemoryEventRepository extends InMemoryRepository implements EventReposit
             }
         }
     }
+
+    public function comingEvents(\Datetime $offsetDate)
+    {
+        $comingEvents = [];
+        foreach ($this->data as $event) {
+            if ($event->date() <= $offsetDate) {
+                $comingEvents[] = $event;
+            }
+        }
+
+        return $comingEvents;
+    }
 }

@@ -13,4 +13,6 @@ interface EventRepositoryInterface
     public function with($id);
 
     public function delete(Event $event);
+
+    public function comingEvents(\Datetime $offsetDate);
 }

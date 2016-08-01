@@ -28,6 +28,10 @@ class Schedule
         return $this->repository->all();
     }
 
+    public function comingEvents() {
+        return $this->repository->comingEvents(new \DateTime());
+    }
+
     public function deleteEvent(Event $event)
     {
         return $this->repository->delete($event);

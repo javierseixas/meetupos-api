@@ -10,16 +10,23 @@ class Event
     protected $title;
     protected $description;
 
+    /** @var \Datetime */
+    protected $event;
+    private $date;
+
     /**
      * Event constructor.
+     * @param $eventId
      * @param $title
      * @param $description
+     * @param $date
      */
-    protected function __construct($eventId, $title, $description)
+    protected function __construct($eventId, $title, $description, $date)
     {
         $this->id = $eventId;
         $this->title = $title;
         $this->description = $description;
+        $this->date = $date;
     }
 
     public static function withTitleAndDescription($title, $description)
@@ -28,7 +35,16 @@ class Event
             throw new IncompleteEventException("Event requires to have a title and a description to be created");
         }
 
-        return new self(Uuid::uuid4()->toString(), $title, $description);
+        return self::withTitleDescriptionAndDate($title, $description, new \DateTime());
+    }
+
+    public static function withTitleDescriptionAndDate($title, $description, \DateTime $date)
+    {
+        if (empty($title) || empty($description || is_null($date))) {
+            throw new IncompleteEventException("Event requires to have a title, a description and a date to be created");
+        }
+
+        return new self(Uuid::uuid4()->toString(), $title, $description, $date);
     }
 
     public function id()
@@ -51,6 +67,16 @@ class Event
     {
         return $this->description;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function date()
+    {
+        return $this->date;
+    }
+
+
 
     // TODO Removes setters
 
@@ -83,5 +109,17 @@ class Event
         $this->description = $description;
         return $this;
     }
+
+    /**
+     * @param \DateTime $date
+     * @return $this
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+        return $this;
+    }
+
+
 
 }

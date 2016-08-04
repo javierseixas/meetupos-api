@@ -121,7 +121,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
      */
     public function iSeeTheseEventsListed()
     {
-        throw new PendingException();
+        throw new PendingException("TODO: parse json response and assert values");
     }
 
 

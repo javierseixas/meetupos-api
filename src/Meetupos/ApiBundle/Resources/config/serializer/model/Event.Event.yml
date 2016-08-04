@@ -16,7 +16,7 @@ Meetupos\Domain\Model\Event\Event:
             type: string
             expose: true
             accessor:
-                getter: title
+                getter: description
         date:
             type: DateTime
             expose : true

@@ -1,8 +1,8 @@
 Meetupos\Domain\Model\Event\Event:
     coming_event_1:
-        __construct: {withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTimeBetween("tomorrow", "tomorrow")>'] }
+        __construct: {withTitleDescriptionAndDate: ['Catan', '<sentence()>', '<dateTimeBetween("tomorrow", "tomorrow")>'] }
     coming_event_2:
-        __construct: { withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTimeBetween("+2 day", "+2 day")>'] }
+        __construct: { withTitleDescriptionAndDate: ['Cuatrola', '<sentence()>', '<dateTimeBetween("+2 day", "+2 day")>'] }
     past_event_1:
         __construct: { withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTime("1 day ago")>'] }
 

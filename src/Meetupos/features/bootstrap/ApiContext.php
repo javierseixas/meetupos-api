@@ -23,6 +23,13 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
     /** @var  \Meetupos\Domain\Model\Event\Event */
     private $event;
 
+    /**
+     * @Given a Schedule
+     */
+    public function aSchedule()
+    {
+        // TODO resolve what should be the Schedule in this Context
+    }
 
     /**
      * @Given There are no events in the schedule

@@ -15,7 +15,7 @@ use Meetupos\Infrastructure\Persistence\InMemory\Event\InMemoryEventRepository;
 use PHPUnit_Framework_Assert;
 use PHPUnit_Framework_Constraint_ArraySubset;
 
-// TODO The initialization of the schedule object is common for all the Given step. It should be extracted
+
 class DomainContext implements Context, SnippetAcceptingContext
 {
     protected $outcome;

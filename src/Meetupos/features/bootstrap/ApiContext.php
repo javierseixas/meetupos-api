@@ -29,7 +29,6 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
      */
     public function thereAreNoEventsInTheSchedule()
     {
-        // TODO Check database
         $tableNode = new TableNode([]);
         $this->get('friendly.entity_context')->thereIsLikeFollowing(0, "Event", $tableNode);
     }

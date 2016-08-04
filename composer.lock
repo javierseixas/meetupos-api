@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "313d6296e97851f26da67fa38fa35d43",
-    "content-hash": "5789637ee71471a3f2cbd47800a2b543",
+    "hash": "d6b5cbaa59d68451049cc629a9800297",
+    "content-hash": "4af4739c2d388ad635bfdbb7074addea",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2999,16 +2999,16 @@
         },
         {
             "name": "behat/symfony2-extension",
-            "version": "dev-master",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Symfony2Extension.git",
-                "reference": "c59756034c0837e11f36806893c308fe27fe9c4c"
+                "reference": "cb9ff0ff2f1a901379616d95cc701601d139160c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/c59756034c0837e11f36806893c308fe27fe9c4c",
-                "reference": "c59756034c0837e11f36806893c308fe27fe9c4c",
+                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/cb9ff0ff2f1a901379616d95cc701601d139160c",
+                "reference": "cb9ff0ff2f1a901379616d95cc701601d139160c",
                 "shasum": ""
             },
             "require": {
@@ -3055,7 +3055,7 @@
                 "framework",
                 "symfony"
             ],
-            "time": "2016-07-18 19:22:02"
+            "time": "2016-01-13 17:06:48"
         },
         {
             "name": "behat/transliterator",
@@ -4794,7 +4794,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "behat/symfony2-extension": 20,
         "behat/mink-browserkit-driver": 20
     },
     "prefer-stable": false,

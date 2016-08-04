@@ -44,7 +44,7 @@ class DoctrineEventRepository extends EntityRepository implements EventRepositor
 
         $q  = $qb->select('e')
             // TODO Provar los dos models de Event
-            ->from('Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model\Event\DoctrineEvent', 'e')
+            ->from('Meetupos\Domain\Model\Event\Event', 'e')
             ->where(
                 $qb->expr()->gt('e.date', ':from')
             )

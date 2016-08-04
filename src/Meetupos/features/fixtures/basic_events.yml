@@ -1,16 +1,9 @@
-Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model\Event\DoctrineEvent:
-    event (template):
-        id: <uuid()>
-        title: <username()>
-        description: <sentence()>
-        date: <dateTimeBetween('tomorrow', 'tomorrow')>
-    coming_event_1 (extends event):
-        title: "Catan"
-    coming_event_2 (extends event):
-        title: "Cuatrola"
-        date: <dateTimeBetween('+2 day', '+2 day')>
-    past_event_1 (extends event):
-        title: "Risk"
-        date: <dateTimeBetween('1 day ago', '1 day ago')>
+Meetupos\Domain\Model\Event\Event:
+    coming_event_1:
+        __construct: {withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTimeBetween("tomorrow", "tomorrow")>'] }
+    coming_event_2:
+        __construct: { withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTimeBetween("+2 day", "+2 day")>'] }
+    past_event_1:
+        __construct: { withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTime("1 day ago")>'] }
 
 

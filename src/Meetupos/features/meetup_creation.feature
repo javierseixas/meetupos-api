@@ -5,6 +5,9 @@ Feature: Events creation
     I want to create events
     In order to allow people to visualize them in the site
 
+    Background: Event system is based in a Schedule
+        Given a Schedule
+
     @api
     Scenario: I create an event successfully
         Given There are no events in the schedule

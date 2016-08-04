@@ -29,6 +29,14 @@ class BddContext implements Context, SnippetAcceptingContext
     private $event;
 
     /**
+     * @Given /^a Schedule$/
+     */
+    public function aSchedule()
+    {
+        $this->schedule = new Schedule(new InMemoryEventRepository());
+    }
+
+    /**
      * @Given /^an account with username as "([^"]*)" and password "([^"]*)"$/
      * @Given /^a user with username "([^"]*)" and password "([^"]*)" signed up$/
      * @Given /^I signed up with username "([^"]*)" and password "([^"]*)"$/
@@ -71,7 +79,6 @@ class BddContext implements Context, SnippetAcceptingContext
      */
     public function thereAreNoEventsInTheSchedule()
     {
-        $this->schedule = new Schedule(new InMemoryEventRepository());
         PHPUnit_Framework_Assert::assertEquals($this->schedule->numberOfComingEvents(), 0);
     }
 
@@ -122,7 +129,6 @@ class BddContext implements Context, SnippetAcceptingContext
      */
     public function thereIsAnEventTitledInTheSchedule($title)
     {
-        $this->schedule = new Schedule(new InMemoryEventRepository());
         $this->event = Event::withTitleAndDescription($title, "Some desc");
         $this->schedule->addEvent($this->event);
     }
@@ -148,8 +154,6 @@ class BddContext implements Context, SnippetAcceptingContext
      */
     public function thereAreACoupleOfEventsInTheSchedule()
     {
-        $this->schedule = new Schedule(new InMemoryEventRepository());
-
         $firstEvent = Event::withTitleAndDescription("Catan", "Best boardgame");
         $secondEvent = Event::withTitleAndDescription("Cuatrola", "Quite good card game");
 
@@ -183,7 +187,6 @@ class BddContext implements Context, SnippetAcceptingContext
      */
     public function thereIsAPastEventInTheSchedule()
     {
-        // TODO The schedule is set before, but in another step. It should be created outside of an step, like in a background
         $pastEvent = Event::withTitleDescriptionAndDate("Risk", "Depends to much on luck", new \DateTime("1 day ago"));
 
         $this->schedule->addEvent($pastEvent);
@@ -205,13 +208,5 @@ class BddContext implements Context, SnippetAcceptingContext
         PHPUnit_Framework_Assert::assertCount(count($expectedEvents), $foundElements);
         $matchExpectedEvents = new PHPUnit_Framework_Constraint_ArraySubset($expectedEvents);
         PHPUnit_Framework_Assert::assertThat($foundElements, $matchExpectedEvents);
-    }
-
-    /**
-     * @Given /^a Schedule$/
-     */
-    public function aSchedule()
-    {
-        throw new PendingException();
     }
 }

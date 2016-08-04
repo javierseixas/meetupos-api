@@ -5,6 +5,9 @@ Feature: List coming events
     I want to list coming events
     In order to be able to join that event
 
+    Background: Event system is based in a Schedule
+        Given a Schedule
+
     @api
     Scenario: I list all coming events when there is only coming events
         Given There are a couple of events in the schedule

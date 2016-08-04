@@ -169,13 +169,34 @@ class BddContext implements Context, SnippetAcceptingContext
 
     /**
      * @Then /^I see these events listed$/
+     * @Then /^I see only the coming events listed$/
      */
     public function iSeeTheseEventsListed()
     {
         $expectedEvents = ["Catan", "Cuatrola"];
+
+        $this->assertThatComingEventsMatchExpected($expectedEvents);
+    }
+
+    /**
+     * @Given /^There is a past event in the schedule$/
+     */
+    public function thereIsAPastEventInTheSchedule()
+    {
+        // TODO The schedule is set before, but in another step. It should be created outside of an step, like in a background
+        $pastEvent = Event::withTitleDescriptionAndDate("Risk", "Depends to much on luck", new \DateTime("1 day ago"));
+
+        $this->schedule->addEvent($pastEvent);
+    }
+
+    /**
+     * @param $expectedEvents
+     */
+    private function assertThatComingEventsMatchExpected($expectedEvents)
+    {
         $foundElements = [];
 
-        foreach($this->schedule->comingEvents() as $event) {
+        foreach ($this->schedule->comingEvents() as $event) {
             if (in_array($event->title(), $expectedEvents)) {
                 $foundElements[] = $event->title();
             }
@@ -184,5 +205,13 @@ class BddContext implements Context, SnippetAcceptingContext
         PHPUnit_Framework_Assert::assertCount(count($expectedEvents), $foundElements);
         $matchExpectedEvents = new PHPUnit_Framework_Constraint_ArraySubset($expectedEvents);
         PHPUnit_Framework_Assert::assertThat($foundElements, $matchExpectedEvents);
+    }
+
+    /**
+     * @Given /^a Schedule$/
+     */
+    public function aSchedule()
+    {
+        throw new PendingException();
     }
 }

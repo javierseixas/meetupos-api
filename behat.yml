@@ -8,6 +8,9 @@ default:
         Knp\FriendlyContexts\Extension:
             api:
                 base_url: http://nginx
+            alice:
+                fixtures:
+                    basic_events: src/Meetupos/features/fixtures/basic_events.yml
 #            alice:
 #                fixtures:
 #                    Group: src/Groupalia/BizApiBundle/Features/Fixtures/groups.yml

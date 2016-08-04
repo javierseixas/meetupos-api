@@ -13,3 +13,5 @@ Meetupos\Domain\Model\Event\Event:
       type: string
     description:
       type: text
+    date:
+      type: datetime

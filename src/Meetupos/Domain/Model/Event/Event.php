@@ -11,8 +11,7 @@ class Event
     protected $description;
 
     /** @var \Datetime */
-    protected $event;
-    private $date;
+    protected $date;
 
     /**
      * Event constructor.

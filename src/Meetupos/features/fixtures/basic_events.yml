@@ -1,0 +1,9 @@
+Meetupos\Domain\Model\Event\Event:
+    coming_event_1:
+        __construct: { withTitleAndDescription: ['Catan', '<sentence()>'] }
+    coming_event_2:
+        __construct: { withTitleAndDescription: ['Cuatrola', '<sentence()>'] }
+    past_event_1:
+        __construct: { withTitleDescriptionAndDate: ['Risk', '<sentence()>', '<dateTime("1 day ago")>'] }
+
+

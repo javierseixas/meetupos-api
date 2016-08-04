@@ -4,6 +4,7 @@ namespace Meetupos\features\bootstrap;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Meetupos\Domain\Model\Event\Event;
@@ -95,6 +96,31 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         $removedEvent = $this->schedule->find($this->event);
         PHPUnit_Framework_Assert::assertNull($removedEvent);
     }
+
+    /**
+     * @Given There are a couple of events in the schedule
+     */
+    public function thereAreACoupleOfEventsInTheSchedule()
+    {
+
+    }
+
+    /**
+     * @When I access the list
+     */
+    public function iAccessTheList()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I see these events listed
+     */
+    public function iSeeTheseEventsListed()
+    {
+        throw new PendingException();
+    }
+
 
     private function assertHttpResponseStatus($expected)
     {

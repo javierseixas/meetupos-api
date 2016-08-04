@@ -1,5 +1,6 @@
 # TODO @reset-schema should be inside the ApiContext
-@domain @reset-schema
+# TODO I'm coupling this features to some infrastructure (Doctrine) by using alice? May I have to put the alice in other place?
+@domain @reset-schema @alice(basic_events)
 Feature: List coming events
     As a user
     I want to list coming events
@@ -8,7 +9,7 @@ Feature: List coming events
     Background: Event system is based in a Schedule
         Given a Schedule
 
-    @api
+    @api @wo
     Scenario: I list all coming events when there is only coming events
         Given There are a couple of events in the schedule
          When I access the list

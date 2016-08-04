@@ -13,8 +13,10 @@ class DoctrineEvent extends Event
      */
     public function __construct()
     {
-        parent::__construct("", "");
+        parent::__construct("", "", "", "");
     }
+
+    // TODO I'm using the setters somewhere? Maybe for FriendlyEntityContext?
 
     public function setTitle($title)
     {
@@ -25,6 +27,12 @@ class DoctrineEvent extends Event
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
+    }
+
+    public function setDate($date)
+    {
+        $this->date = $date;
         return $this;
     }
 }

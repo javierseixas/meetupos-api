@@ -13,3 +13,5 @@ Meetupos\Infrastructure\Persistence\Doctrine\ORM\Model\Event\DoctrineEvent:
       type: string
     description:
       type: text
+    date:
+      type: datetime

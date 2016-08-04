@@ -50,11 +50,11 @@ default:
 #                - Knp\FriendlyContexts\Context\AliceContext
 #                - Meetupos\AuthApiBundle\Features\Context\FeatureContext
 #                - Meetupos\AuthApiBundle\Features\Context\DataContext
-        bdd:
+        domain:
             paths:
                 - %paths.base%/src/Meetupos/features
             contexts:
-                - Meetupos\features\bootstrap\BddContext
+                - Meetupos\features\bootstrap\DomainContext
             filters:
                 tags: @domain
         api:

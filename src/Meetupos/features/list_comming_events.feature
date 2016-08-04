@@ -1,5 +1,5 @@
 # TODO @reset-schema should be inside the ApiContext
-@bdd @reset-schema @domain
+@domain @reset-schema
 Feature: List coming events
     As a user
     I want to list coming events

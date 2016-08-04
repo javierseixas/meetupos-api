@@ -7,10 +7,17 @@ post_event:
     defaults: { _controller: sf_event_controller:postEvent }
     methods:  [POST]
 
+get_coming_events:
+    path: /events/coming
+    defaults: { _controller: sf_event_controller:getComingEvents }
+    methods:  [GET]
+
 get_event:
     path: /events/{id}
     defaults: { _controller: sf_event_controller:getEvent }
     methods:  [GET]
+    requirements:
+        id: /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
 
 delete_event:
     path: /events/{id}

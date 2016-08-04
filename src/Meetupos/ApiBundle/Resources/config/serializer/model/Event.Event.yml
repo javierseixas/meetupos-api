@@ -1,22 +1,27 @@
 Meetupos\Domain\Model\Event\Event:
     exclusion_policy: ALL
     access_type: public_method
-    properties :
+    properties:
         id:
             type: string
             expose: true
             accessor:
                 getter: id
-        title :
+        title:
             type: string
-            expose : true
+            expose: true
             accessor:
                 getter: title
-        description :
+        description:
             type: string
-            expose : true
+            expose: true
             accessor:
                 getter: title
+        date:
+            type: DateTime
+            expose : true
+            accessor:
+                getter: date
     relations:
         -
             rel: self

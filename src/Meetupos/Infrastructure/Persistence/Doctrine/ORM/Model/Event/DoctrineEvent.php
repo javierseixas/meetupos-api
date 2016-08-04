@@ -11,10 +11,10 @@ class DoctrineEvent extends Event
     /**
      * Event constructor.
      */
-    public function __construct()
-    {
-        parent::__construct("", "", "", "");
-    }
+//    public function __construct($id, $title, $description, $date)
+//    {
+//        parent::__construct($id, $title, $description, $date);
+//    }
 
     // TODO I'm using the setters somewhere? Maybe for FriendlyEntityContext?
 

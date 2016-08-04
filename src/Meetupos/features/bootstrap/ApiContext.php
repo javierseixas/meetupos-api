@@ -110,7 +110,10 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
      */
     public function iAccessTheList()
     {
-        throw new PendingException();
+        $this->iPrepareRequest("GET", "/events/coming");
+        $this->iSendTheRequest();
+
+        $this->assertHttpResponseStatus(self::HTTP_STATUS_OK);
     }
 
     /**

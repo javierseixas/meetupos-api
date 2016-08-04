@@ -37,6 +37,17 @@ class EventController
         return new Response("", Response::HTTP_NO_CONTENT);
     }
 
+    public function getComingEvents()
+    {
+        $events = $this->eventRepository->comingEvents(new \DateTime('now'));
+
+        return new Response(
+            $this->serializer->serialize(
+                $events,
+                'json'),
+            Response::HTTP_OK);
+    }
+
     // TODO Move this to CQRS?
     public function getEvent($id)
     {

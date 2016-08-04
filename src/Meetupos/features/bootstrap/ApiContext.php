@@ -50,7 +50,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         $this->iSpecifiedTheBody(sprintf('{"title":"%s","description":"%s"}', $title, $description));
         $this->iSendTheRequest();
 
-        $this->assertHttpResponseStatus(self::HTTP_STATUS_CREATED);
+        $this->iShouldReceiveResponse(self::HTTP_STATUS_CREATED);
     }
 
     /**
@@ -84,7 +84,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         $this->iPrepareRequest("DELETE", sprintf("/events/%s", $this->event->id()));
         $this->iSendTheRequest();
 
-        $this->assertHttpResponseStatus(self::HTTP_STATUS_NO_CONTENT);
+        $this->iShouldReceiveResponse(self::HTTP_STATUS_NO_CONTENT);
     }
 
     /**
@@ -113,7 +113,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         $this->iPrepareRequest("GET", "/events/coming");
         $this->iSendTheRequest();
 
-        $this->assertHttpResponseStatus(self::HTTP_STATUS_OK);
+        $this->iShouldReceiveResponse(self::HTTP_STATUS_OK);
     }
 
     /**
@@ -152,14 +152,20 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
         }
     }
 
-
-    private function assertHttpResponseStatus($expected)
+    /**
+     * @Given There is a past event in the schedule
+     */
+    public function thereIsAPastEventInTheSchedule()
     {
-        // TODO I could use $this->iShouldReceiveResponse()
-        PHPUnit_Framework_Assert::assertEquals(
-            $expected,
-            $this->getResponse()->getStatusCode(),
-            sprintf("Wrong HTTP Status: %d expected. Got %d", $expected, $this->getResponse()->getStatusCode())
-        );
+        throw new PendingException();
     }
+
+    /**
+     * @Then I see only the coming events listed
+     */
+    public function iSeeOnlyTheComingEventsListed()
+    {
+        throw new PendingException();
+    }
+
 }

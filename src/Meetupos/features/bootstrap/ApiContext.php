@@ -121,12 +121,41 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
      */
     public function iSeeTheseEventsListed()
     {
-        throw new PendingException("TODO: parse json response and assert values");
+        // TODO Move this to some place where I can handle better
+        $expectedResponseBody = "[
+  {
+    \"id\": @string@,
+    \"title\": \"Catan\",
+    \"description\": @string@,
+    \"date\": @string@,
+    \"_links\": {
+      \"self\": {
+        \"href\": @string@
+      }
+    }
+  },
+  {
+    \"id\": @string@,
+    \"title\": \"Cuatrola\",
+    \"description\": @string@,
+    \"date\": @string@,
+    \"_links\": {
+      \"self\": {
+        \"href\": @string@
+      }
+    }
+  }
+]";
+
+        if ($diff = $this->container->get('behat.rest.differ')->diff($this->response->getBody(true), $expectedResponseBody)) {
+            throw new \LogicException($diff);
+        }
     }
 
 
     private function assertHttpResponseStatus($expected)
     {
+        // TODO I could use $this->iShouldReceiveResponse()
         PHPUnit_Framework_Assert::assertEquals(
             $expected,
             $this->getResponse()->getStatusCode(),

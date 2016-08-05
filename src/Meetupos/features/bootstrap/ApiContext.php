@@ -110,7 +110,7 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
      */
     public function thereAreACoupleOfEventsInTheSchedule()
     {
-
+        // TODO here it doesn't make much sense since I'm using alice
     }
 
     /**
@@ -143,7 +143,6 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
     public function thereIsAPastEventInTheSchedule()
     {
         // TODO here it doesn't make much sense since I'm using alice
-        //throw new PendingException("Think about the above TODO");
     }
 
     // TODO This is a candidate to extract to another Class

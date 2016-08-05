@@ -18,11 +18,19 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
     const HTTP_STATUS_OK = 200;
     const HTTP_STATUS_CREATED = 201;
 
-    /** @var  \Meetupos\Domain\Model\Event\Schedule */
+    /** @var string */
+    protected $responsesPath;
+
+    /** @var \Meetupos\Domain\Model\Event\Schedule */
     private $schedule;
 
-    /** @var  \Meetupos\Domain\Model\Event\Event */
+    /** @var \Meetupos\Domain\Model\Event\Event */
     private $event;
+
+    public function __construct($responses_path = "")
+    {
+        $this->responsesPath = $responses_path;
+    }
 
     /**
      * @Given a Schedule
@@ -118,34 +126,11 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
 
     /**
      * @Then I see these events listed
+     * @Then I see only the coming events listed
      */
     public function iSeeTheseEventsListed()
     {
-        // TODO Move this to some place where I can handle better
-        $expectedResponseBody = "[
-  {
-    \"id\": @string@,
-    \"title\": \"Catan\",
-    \"description\": @string@,
-    \"date\": @string@,
-    \"_links\": {
-      \"self\": {
-        \"href\": @string@
-      }
-    }
-  },
-  {
-    \"id\": @string@,
-    \"title\": \"Cuatrola\",
-    \"description\": @string@,
-    \"date\": @string@,
-    \"_links\": {
-      \"self\": {
-        \"href\": @string@
-      }
-    }
-  }
-]";
+        $expectedResponseBody = $this->getFromFile("i_list_all_coming_events_and_not_past_when_there_are_both.json");
 
         if ($diff = $this->container->get('behat.rest.differ')->diff($this->response->getBody(true), $expectedResponseBody)) {
             throw new \LogicException($diff);
@@ -157,15 +142,15 @@ class ApiContext extends \Knp\FriendlyContexts\Context\ApiContext implements Con
      */
     public function thereIsAPastEventInTheSchedule()
     {
-        throw new PendingException();
+        // TODO here it doesn't make much sense since I'm using alice
+        //throw new PendingException("Think about the above TODO");
     }
 
-    /**
-     * @Then I see only the coming events listed
-     */
-    public function iSeeOnlyTheComingEventsListed()
+    // TODO This is a candidate to extract to another Class
+    protected function getFromFile($filename)
     {
-        throw new PendingException();
+        return trim(file_get_contents(sprintf("%s/%s", $this->responsesPath, $filename)));
     }
+
 
 }

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "@string@",
+    "title": "Catan",
+    "description": "@string@",
+    "date": "@string@",
+    "_links": {
+      "self": {
+        "href": "@string@"
+      }
+    }
+  },
+  {
+    "id": "@string@",
+    "title": "Cuatrola",
+    "description": "@string@",
+    "date": "@string@",
+    "_links": {
+      "self": {
+        "href": "@string@"
+      }
+    }
+  }
+]

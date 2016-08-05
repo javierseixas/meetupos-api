@@ -9,7 +9,6 @@ Feature: List coming events
     Background: Event system is based in a Schedule
         Given a Schedule
 
-    @api @wo
     Scenario: I list all coming events when there is only coming events
         Given There are a couple of events in the schedule
          When I access the list

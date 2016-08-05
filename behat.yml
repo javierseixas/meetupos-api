@@ -6,37 +6,14 @@ default:
         Groupalia\BehatMatcherExtension\Extension: ~
         JavierSeixas\FriendlyContextsAsServicesExtension\Extension: ~
         Knp\FriendlyContexts\Extension:
+#            meetupos:
+#                responses_path: src/Meetupos/features/expectations
             api:
                 base_url: http://nginx
             alice:
                 fixtures:
-                    basic_events: src/Meetupos/features/fixtures/basic_events.yml
-#            alice:
-#                fixtures:
-#                    Group: src/Groupalia/BizApiBundle/Features/Fixtures/groups.yml
-#                    Role: src/Groupalia/BizApiBundle/Features/Fixtures/roles.yml
-#                    Account: src/Groupalia/BizApiBundle/Features/Fixtures/accounts.yml
-#                    Place: src/Groupalia/BizApiBundle/Features/Fixtures/places.yml
-#                    Service: src/Groupalia/BizApiBundle/Features/Fixtures/services.yml
-#                    Campaign: src/Groupalia/BizApiBundle/Features/Fixtures/campaigns.yml
-#                    Product: src/Groupalia/BizApiBundle/Features/Fixtures/products.yml
-#                    User: src/Groupalia/BizApiBundle/Features/Fixtures/users.yml
-#                    Customer: src/Groupalia/BizApiBundle/Features/Fixtures/customers.yml
-#                    Coupon: src/Groupalia/BizApiBundle/Features/Fixtures/coupons.yml
-#                    Order: src/Groupalia/BizApiBundle/Features/Fixtures/orders.yml
-#                    Invoice: src/Groupalia/BizApiBundle/Features/Fixtures/invoices.yml
-#                    Payment: src/Groupalia/BizApiBundle/Features/Fixtures/payments.yml
-#
-#                    CampaignStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/campaigns.yml
-#                    ProductStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/products.yml
-#                    UserStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/users.yml
-#                    CouponStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/coupons.yml
-#                    OrderStats: src/Groupalia/BizApiBundle/Features/Fixtures/stats/orders.yml
-#                    Opinion: src/Groupalia/BizApiBundle/Features/Fixtures/stats/opinions.yml
-#                providers:
-#                    - @groupalia.faker.provider.campaign
-#                    - @groupalia.faker.provider.order
-#                    - @groupalia.faker.provider.geolocation
+                    basic_events: src/Meetupos/features/fixtures/database/basic_events.yml
+
         Behat\MinkExtension:
             sessions:
                 my_session:
@@ -66,6 +43,7 @@ default:
             contexts:
                 - Knp\FriendlyContexts\Context\EntityContext
                 - Knp\FriendlyContexts\Context\AliceContext
-                - Meetupos\features\bootstrap\ApiContext
+                - Meetupos\features\bootstrap\ApiContext:
+                    responses_path: src/Meetupos/features/expectations
             filters:
                 tags: @api
